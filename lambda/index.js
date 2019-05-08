@@ -28,6 +28,7 @@ handle(handlerInput){
          data.jrTemplate1.titulo = "Cuánto Falta";
          data.jrTemplate1.textoPrincipal2 = AYUDA_MSG;
          data.jrTemplate1.textoPrincipal3 = "";
+         data.jrTemplate1.backgroundImage.sources[0].url = [YOUR DEFAULT URL BACKGROUND]
          
         let show = data;
 
@@ -99,11 +100,7 @@ const consultaIntent = {
     let outputSpeech = 'This is the default message.';
     let quien = getSlotValue(handlerInput);
     let cardText;
-    let restantes;
-    let restantes_string;
-    let separador;
-    let nombre_dicho
-    let tipo
+    let restantes, restantes_string, separador, nombre_dicho, tipo, cumple_hoy, tipo_viaje;
     console.log("Consultando---->" + quien);
 
     await getRemoteData('[YOUR PHP API URL]?quien=' + quien)
@@ -123,14 +120,20 @@ const consultaIntent = {
             //EXTRAE SOLO NUMEROS
             var numberPattern = /\d+/g;
             restantes = `${data.frase}`.match( numberPattern )
+            
+        
+        if (restantes != null) {
+             console.log("LOG--> restante no es nulo-->" + restantes);   
             restantes_string = restantes.toString()
             separador = restantes_string.split(',');
+            }
         
         var str = `${data.frase}`;
         var substr = "mañana";
         var result = str.indexOf(substr) > -1;
         if (result == true) {
            outputSpeech = `${data.name}` + " Ya no falta nada!" + "<audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_neutral_response_01'/>";
+           cumple_hoy=2;
         }
         
         str = `${data.frase}`;
@@ -165,6 +168,7 @@ const consultaIntent = {
         result = str.indexOf(substr) > -1;
         if (result == true) {
            outputSpeech = `${data.name}` + "<say-as interpret-as=\"interjection\">Felicidades</say-as>";
+           cumple_hoy=1;
         }
         
         substr = "viaje";
@@ -188,13 +192,31 @@ const consultaIntent = {
        if (handlerInput.requestEnvelope.context.System.device.supportedInterfaces['Alexa.Presentation.APL']) {
            
         
-         //Ya que se usa una solo templeta para Multimodal, se modifica ocultando o mostrando los distintos items dependiendo del caso
+         //Ya que se usa una solo template para Multimodal, se modifica ocultando o mostrando los distintos items dependiendo del caso
          if (tipo=="Cumple") {
-         data.jrTemplate1.hintText = "Cumplirá " + separador[1] + " años.🎂";
-         data.jrTemplate1.textoPrincipal = separador[0];
-         data.jrTemplate1.titulo = nombre_dicho;
-         data.jrTemplate1.textoPrincipal2 = "";
-         data.jrTemplate1.textoPrincipal3 = "días";
+             
+            data.jrTemplate1.titulo = nombre_dicho;
+            data.jrTemplate1.textoPrincipal2 = "";
+            data.jrTemplate1.textoPrincipal3 = "días";
+         
+         if (separador!=null) {     
+            data.jrTemplate1.hintText = "Cumplirá " + separador[1] + " años.🎂";
+            data.jrTemplate1.textoPrincipal = separador[0];
+         }    
+         
+         if (cumple_hoy == 1) {
+            data.jrTemplate1.backgroundImage.sources[0].url = "[URL IMAGE FOR TODAY BIRTHDAY]"
+            data.jrTemplate1.hintText = "Felicidades ! 🎉🎂";
+            data.jrTemplate1.textoPrincipal = "0";
+         }
+         
+         if (cumple_hoy == 2) {
+            data.jrTemplate1.backgroundImage.sources[0].url = "[URL IMAGE FOR 1 DAY LEFT BIRTHDAY]"
+            data.jrTemplate1.hintText = "Ya no falta nada! 🎉";
+            data.jrTemplate1.textoPrincipal = "1";
+            data.jrTemplate1.textoPrincipal3 = "día";
+         }
+         
          } else {
         
         if (tipo=="EventoRepetible") {
@@ -212,6 +234,10 @@ const consultaIntent = {
          data.jrTemplate1.titulo = "";
          data.jrTemplate1.textoPrincipal2 = nombre_dicho;
          data.jrTemplate1.textoPrincipal3 = "";
+         
+         if (tipo_viaje == 1) {
+            data.jrTemplate1.backgroundImage.sources[0].url = "[URL IMAGE FOR TRAVEL]"
+         }
          
          } else {
          

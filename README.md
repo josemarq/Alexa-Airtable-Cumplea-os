@@ -11,7 +11,7 @@ https://streamable.com/ottcc
 
 Campos de la tabla en Airtable
 
-fecha: Fecha de Nacimiento o del Evento
+fecha: fecha de nacimiento o fecha del evento
 
 nombre: nombre de la persona o del evento
 
@@ -21,3 +21,5 @@ nombre_dicho: Como Alexa pronunciará el nombre de la persona o del evento
 
 tipo: Cumple/EventoRepetible/EventoNoRepetible
 
+
+NOTA: Esta tabla puede alimentar una Skill más grande, la uso para otra Skill que maneja datos personales. Direcciónes, números de teléfono, lugar de nacimiento, identificación, etc. Con Airtable es muy fácil editar las tablas.

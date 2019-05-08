@@ -1,0 +1,193 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "cuanto falta",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": [
+                        "salir"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "consultaIntent",
+                    "slots": [
+                        {
+                            "name": "quien",
+                            "type": "tipoQuien",
+                            "samples": [
+                                "{quien}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "di me {quien}",
+                        "dime de {quien} ",
+                        "de {quien}",
+                        "cuando es el cumpleaños de {quien}",
+                        "{quien}",
+                        "dime {quien}",
+                        "fecha de {quien}",
+                        "cumpleaños de {quien}",
+                        "dime datos de {quien}",
+                        "quiero un dato de {quien}"
+                    ]
+                },
+                {
+                    "name": "proximoIntent",
+                    "slots": [],
+                    "samples": [
+                        "próximo",
+                        "próximo cumpleaños"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "tipoQuien",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "viaje_vacaciones",
+                                "synonyms": [
+                                    "viaje de vacaciones",
+                                    "vacaciones"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "pepa",
+                                "synonyms": [
+                                    "pepa pig"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "abuela_pig",
+                                "synonyms": [
+                                    "abuela pig"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "abuelo_pig",
+                                "synonyms": [
+                                    "abuelo pig"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "granja"
+                            }
+                        },
+                       
+                        {
+                            "name": {
+                                "value": "papa",
+                                "synonyms": [
+                                    "papá pig"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "mama",
+                                "synonyms": [
+                                    "mamá pig",
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "navidad",
+                                "synonyms": [
+                                    "día de navidad"
+                                ]
+                            }
+                        }
+                         }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "consultaIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "quien",
+                            "type": "tipoQuien",
+                            "confirmationRequired": true,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "confirmation": "Confirm.Slot.259790494392.392868107546",
+                                "elicitation": "Elicit.Slot.259790494392.392868107546"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "SKILL_RESPONSE"
+        },
+        "prompts": [
+            {
+                "id": "Confirm.Intent.1339141455341",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "¿Confirmas?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "¿Estás seguro?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.259790494392.392868107546",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "De quién quieres saber la información. Dime de, y el nombre de la persona o evento... o dime salir."
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Slot.259790494392.392868107546",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "entendí {quien} ?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "{quien} , estás seguro?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "¿confirmas a {quien} ?"
+                    }
+                ]
+            }
+        ]
+    }
+}

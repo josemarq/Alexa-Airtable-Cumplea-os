@@ -12,8 +12,12 @@ https://streamable.com/ottcc
 Campos de la tabla en Airtable
 
 fecha: Fecha de Nacimiento o del Evento
+
 nombre: nombre de la persona o del evento
+
 id: el que usará el slot de Alexa para encontrarlo
+
 nombre_dicho: Como Alexa pronunciará el nombre de la persona o del evento
+
 tipo: Cumple/EventoRepetible/EventoNoRepetible
 

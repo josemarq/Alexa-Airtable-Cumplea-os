@@ -1,4 +1,4 @@
-# Alexa-Airtable-Cumplea-os
+# Alexa-Airtable-Cumpleaños
 Skill para preguntar a Alexa cuanto falta para los cumples de casa. Ejemplo de Skill Multimodal.
 
 La tabla está creada en Airtable. Se creó también un formulario de la tabla para que cada miembro de la familia llenase sus datos.

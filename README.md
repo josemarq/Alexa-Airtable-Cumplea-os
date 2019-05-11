@@ -10,7 +10,7 @@ Por facilidad, se creo un solo template y se muestran u ocultan los items de acu
 Airtable https://airtable.com/invite/r/ZvkBiioY
 
 Video de DEMO:
-https://streamable.com/ottcc
+https://www.youtube.com/watch?v=ueWYFTMsIJk
 
 Campos de la tabla en Airtable
 
